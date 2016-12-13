@@ -1,0 +1,130 @@
+# Copyright (C) 2009 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+
+LOCAL_PATH := $(call my-dir)
+#APP_PATH:= $(NDK)/$(call my-dir) 
+
+include $(CLEAR_VARS) 
+
+LOCAL_MODULE := libiconv 
+LIBICONV := libiconv
+
+LOCAL_CFLAGS := -I$(LOCAL_PATH)/$(LIBICONV)
+LOCAL_SRC_FILES := $(LIBICONV)/iconv.c
+
+include $(BUILD_STATIC_LIBRARY) 
+
+include $(CLEAR_VARS) 
+
+LOCAL_MODULE := libjpeg
+LIBJPEG := libjpeg
+
+LOCAL_CFLAGS := -I$(LOCAL_PATH)/$(LIBJPEG)
+LOCAL_SRC_FILES := $(LIBJPEG)/jaricom.c \
+				   $(LIBJPEG)/jcapimin.c \
+				   $(LIBJPEG)/jcapistd.c \
+				   $(LIBJPEG)/jcarith.c \
+				   $(LIBJPEG)/jccoefct.c \
+				   $(LIBJPEG)/jccolor.c \
+				   $(LIBJPEG)/jcdctmgr.c \
+				   $(LIBJPEG)/jchuff.c \
+				   $(LIBJPEG)/jcinit.c \
+				   $(LIBJPEG)/jcmainct.c \
+				   $(LIBJPEG)/jcmarker.c \
+				   $(LIBJPEG)/jcmaster.c \
+				   $(LIBJPEG)/jcomapi.c \
+				   $(LIBJPEG)/jcparam.c \
+				   $(LIBJPEG)/jcprepct.c \
+				   $(LIBJPEG)/jcsample.c \
+				   $(LIBJPEG)/jctrans.c \
+				   $(LIBJPEG)/jdapimin.c \
+				   $(LIBJPEG)/jdapistd.c \
+				   $(LIBJPEG)/jdarith.c \
+				   $(LIBJPEG)/jdatadst.c \
+				   $(LIBJPEG)/jdatasrc.c \
+				   $(LIBJPEG)/jdcoefct.c \
+				   $(LIBJPEG)/jdcolor.c \
+				   $(LIBJPEG)/jddctmgr.c \
+				   $(LIBJPEG)/jdhuff.c \
+				   $(LIBJPEG)/jdinput.c \
+				   $(LIBJPEG)/jdmainct.c \
+				   $(LIBJPEG)/jdmarker.c \
+				   $(LIBJPEG)/jdmaster.c \
+				   $(LIBJPEG)/jdmerge.c \
+				   $(LIBJPEG)/jdpostct.c \
+				   $(LIBJPEG)/jdsample.c \
+				   $(LIBJPEG)/jdtrans.c \
+				   $(LIBJPEG)/jerror.c \
+				   $(LIBJPEG)/jfdctflt.c \
+				   $(LIBJPEG)/jfdctfst.c \
+				   $(LIBJPEG)/jfdctint.c \
+				   $(LIBJPEG)/jidctflt.c \
+				   $(LIBJPEG)/jidctfst.c \
+				   $(LIBJPEG)/jidctint.c \
+				   $(LIBJPEG)/jquant1.c \
+				   $(LIBJPEG)/jquant2.c \
+				   $(LIBJPEG)/jutils.c \
+				   $(LIBJPEG)/jmemmgr.c \
+				   $(LIBJPEG)/jmemansi.c 
+				   
+include $(BUILD_STATIC_LIBRARY) 
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := ZBarDecoder
+
+LOCAL_SRC_FILES :=	convert.c \
+					decoder.c \
+					error.c \
+					image.c \
+					img_scanner.c \
+					jpeg.c \
+					processor.c \
+					refcnt.c \
+					scanner.c \
+					svg.c \
+					symbol.c \
+					video.c \
+					window.c \
+					qrcode/bch15_5.c \
+					qrcode/binarize.c \
+					qrcode/isaac.c \
+					qrcode/qrdec.c \
+					qrcode/qrdectxt.c \
+					qrcode/rs.c \
+					qrcode/util.c \
+					processor/null.c \
+					video/null.c \
+					window/null.c \
+					decoder/codabar.c \
+					decoder/code39.c \
+					decoder/code93.c \
+					decoder/code128.c \
+					decoder/databar.c \
+					decoder/ean.c \
+					decoder/i25.c \
+					decoder/pdf417.c \
+					decoder/qr_finder.c \
+					com_th_zbar_build_ZBarDecoder.c
+	
+LOCAL_CFLAGS := -I$(LOCAL_PATH) -I$(LOCAL_PATH)/$(LIBICONV) -I$(LOCAL_PATH)/$(LIBJPEG)
+LOCAL_LDLIBS := -llog
+
+LOCAL_STATIC_LIBRARIES := libiconv 
+LOCAL_STATIC_LIBRARIES += libjpeg
+
+include $(BUILD_SHARED_LIBRARY)
+
